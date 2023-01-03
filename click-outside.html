@@ -77,6 +77,15 @@
       transition: opacity 0.2s;
     }
 
+    .modal-outer img {
+      width: 100%;
+    }
+
+    .modal-outer.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
     /*when modal has a class of open, we make model visible*/
     .modal-outer.open {
       opacity: 1;
@@ -90,6 +99,13 @@
       border-radius: 5px;
       min-height: 200px;
       background-color: white;
+      transform: translateY(-200%);
+      transition: transform 2s;
+    }
+
+    /*when modal has class of open, we want to grab class modal-inner*/
+    .modal-outer.open .modal-inner {
+      transform: translateY(0);
     }
   </style>
   <script src="./click-outside.js"></script>

@@ -18,7 +18,28 @@ function handleCardButtonClick(e) {
   `;
   //show modal
   modalInner.outerHTML.classList.add('open');
-}
+};
 
 //have to use forEach because we have multiple cards
-cardButtons.forEach(button => button.addEventListener('click', handleCardButtonClick);
+cardButtons.forEach(button => 
+  button.addEventListener('click', handleCardButtonClick)
+);
+
+
+//close modal
+function closeModal() {
+  modalOuter.classList.remove('open');
+};
+
+modalOuter.addEventListener('click', function(e) {
+  const isOutside = !e.target.closest('.modal-inner'); //tells us anything inside modal inner is okay, but any element outside of inner (like outer or close, it won't find anything)
+  if (isOutside) { //checks boolean from above (indicated by !)
+    closeModal();
+  }
+});
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === "Escape") {
+    closeModal();
+  }
+});
